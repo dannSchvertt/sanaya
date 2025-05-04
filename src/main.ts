@@ -7,4 +7,3 @@ bootstrapApplication(AppComponent, {
   providers: [provideRouter(routes)]
 });
 
-
