@@ -11,11 +11,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/sanaya",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -24,14 +24,15 @@
               {
                 "glob": "**/*",
                 "input": "src/assets",
-                 "output": "assets"
+                "output": "assets"
               }
             ],
             "styles": [
               "node_modules/normalize.css/normalize.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "baseHref": "/sanaya/"
           },
           "configurations": {
             "production": {
@@ -84,7 +85,7 @@
               {
                 "glob": "**/*",
                 "input": "src/assets",
-                 "output": "assets"
+                "output": "assets"
               }
             ],
             "styles": [
@@ -98,3 +99,4 @@
     }
   }
 }
+
