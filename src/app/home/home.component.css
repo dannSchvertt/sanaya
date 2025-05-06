@@ -47,6 +47,18 @@
   padding: 0rem 9rem;
   flex-wrap: wrap;
 }
+.hero-text {
+  animation: slideInLeft 1s ease-out forwards;
+  opacity: 0; /* inicia oculto */
+  transform: translateX(-50px); /* inicia desde la izquierda */
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
 .hero-text h1 {
   margin-bottom: 1rem;
@@ -81,6 +93,12 @@
 
 .servicio {
   max-width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.servicio:hover {
+  transform: scale(1.05);
 }
 
 .boton-servicios {
@@ -93,26 +111,46 @@
   width: 250px;
   font-weight: 700;
   margin-top: 65px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.boton-servicios:hover {
+  background-color: #b2dcd3; /* Cambio de color en hover */
+  color: #2d6257; /* Cambiar color de texto a verde oscuro (opcional) */
 }
 
 .promo {
   display: flex;
-  align-items: center;
-  background: #b2dcd3;
-  padding: 2rem 9rem;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
+  flex-wrap: wrap;
+  background: white;
+  padding: 2rem 1rem;
 }
 
-.promo img {
+.promo-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #b2dcd3;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(45, 98, 87, 0.15);
+  padding: 1rem;
   width: 300px;
-  border-radius: 10px;
+}
+
+/* La imagen toma altura automática y mantiene proporciones */
+.promo-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
   display: block;
 }
 
-.promo-text {
-  max-width: 300px;
+/* Igualar altura entre tarjetas usando flexbox */
+.promo {
+  align-items: stretch;
 }
 
 .opiniones {
