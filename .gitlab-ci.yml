@@ -1,24 +1,17 @@
 image: node:18  # Usamos la imagen oficial de Node.js
 
 stages:
-  - build
   - deploy
 
-build:
-  stage: build
-  script:
-    - npm install  # Instalar las dependencias del proyecto
-    - npm run build --prod  # Compilar el proyecto para producción
-  artifacts:
-    paths:
-      - dist/  # Guardamos los archivos construidos
-
-pages:
+deploy:
   stage: deploy
   script:
-    - mv dist/* public/  # Mover los archivos generados al directorio 'public'
+    - npm install -g @angular/cli
+    - npm ci
+    - ng build --prod --base-href "https://dannschvertt.gitlab.io/sanaya/"
   artifacts:
     paths:
-      - public  # GitLab Pages usa este directorio para servir los archivos
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH  # Solo en la rama principal
+      - dist/sanaya
+  only:
+    - publicacion  # O cualquier rama que utilices para deploy
+
